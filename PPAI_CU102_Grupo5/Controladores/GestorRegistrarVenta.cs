@@ -9,8 +9,10 @@ namespace PPAI_CU102_Grupo5.Controladores
 {
     public class GestorRegistrarVenta
     {
-        public PantallaRegistrarVenta pantallaRegistrarVenta;
-        public Sede sedeActual;
+        private PantallaRegistrarVenta pantallaRegistrarVenta;
+        private Sede sedeActual;
+        private Tarifa TarifaSeleccionada;
+        private float montoEntrada; 
         public GestorRegistrarVenta()
         {
         }
@@ -18,9 +20,11 @@ namespace PPAI_CU102_Grupo5.Controladores
 
         public void opcionRegistrarVentaEntrada(Sesion sesionActual, PantallaRegistrarVenta pantallaRegistrarVenta)
         {
-            var sedeActual = buscarSedeActual(sesionActual);
+            sedeActual = buscarSedeActual(sesionActual);
             var tarifasVigentes = buscarTarifasVigentesYExistentes(sedeActual);
             pantallaRegistrarVenta.mostrarTarifasVigentes(tarifasVigentes);
+
+
 
         }
         public List<string> buscarTarifasVigentesYExistentes(Sede sedeActual)
@@ -32,7 +36,10 @@ namespace PPAI_CU102_Grupo5.Controladores
         }
 
 
-   
+        public void calcularDuracionEstimada()
+        {
+            sedeActual.calcularDuracionExposicionesVigentes();
+        }
         public Sede buscarSedeActual(Sesion sesionActual)
         {
             var usuario = sesionActual.conocerUsuario();
@@ -41,5 +48,46 @@ namespace PPAI_CU102_Grupo5.Controladores
             return sede;
         }
 
+        public void tomarSeleccionTarifa(Tarifa seleccionada,PantallaRegistrarVenta pantalla)
+        {
+            TarifaSeleccionada = seleccionada;
+            calcularDuracionEstimada();
+            pantalla.solicitarCantidadEntradas();
+        }
+
+
+
+        private DateTime obtenerFechaHoraActual()
+        {
+            return DateTime.Now;
+        }
+        private void buscarCapacidadSede(int cantidad, PantallaRegistrarVenta pantallaRegistrarVenta)
+        {
+            var fecha = obtenerFechaHoraActual();
+            int cantidadMaxima = sedeActual.getCantidadMaximaVisitantes(fecha);
+            if (validarCantidadVisitantes(cantidad, cantidadMaxima))
+            {
+                var monto = calcularMontoAPagar(cantidad);
+                pantallaRegistrarVenta.mostrarDatosEntrada(cantidad,montoEntrada,monto);
+            }
+
+        }
+
+        private float calcularMontoAPagar(int cantidad)
+        {
+            montoEntrada = (TarifaSeleccionada.getMonto() + TarifaSeleccionada.getMontoAdicionalGuia());
+            float monto =  montoEntrada * cantidad;
+            return monto;
+        }
+
+        private bool validarCantidadVisitantes(int cantidadIngresada, int cantidadMaxima)
+        {
+            return cantidadIngresada <= cantidadMaxima;
+        }
+
+        public void tomarSeleccionCantidadEntradas(int cantidad, PantallaRegistrarVenta pantallaRegistrarVenta)
+        {
+            buscarCapacidadSede(cantidad, pantallaRegistrarVenta);
+        }
     }
 }

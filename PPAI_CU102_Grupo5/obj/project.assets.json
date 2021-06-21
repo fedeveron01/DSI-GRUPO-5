@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Fede\\source\\repos\\PPAI_CU102_Grupo5\\PPAI_CU102_Grupo5\\PPAI_CU102_Grupo5.csproj",
+      "projectUniqueName": "C:\\Users\\Fede\\Documents\\DSI TP1\\PPAI_CU102_Grupo5\\PPAI_CU102_Grupo5.csproj",
       "projectName": "PPAI_CU102_Grupo5",
-      "projectPath": "C:\\Users\\Fede\\source\\repos\\PPAI_CU102_Grupo5\\PPAI_CU102_Grupo5\\PPAI_CU102_Grupo5.csproj",
+      "projectPath": "C:\\Users\\Fede\\Documents\\DSI TP1\\PPAI_CU102_Grupo5\\PPAI_CU102_Grupo5.csproj",
       "packagesPath": "C:\\Users\\Fede\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Fede\\source\\repos\\PPAI_CU102_Grupo5\\PPAI_CU102_Grupo5\\obj\\",
+      "outputPath": "C:\\Users\\Fede\\Documents\\DSI TP1\\PPAI_CU102_Grupo5\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Fede\\AppData\\Roaming\\NuGet\\NuGet.Config",

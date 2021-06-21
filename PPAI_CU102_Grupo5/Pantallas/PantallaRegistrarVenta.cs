@@ -28,11 +28,12 @@ namespace PPAI_CU102_Grupo5
             sesionActual.Usuario = new Usuario();
             sesionActual.Usuario.Empleado = new Empleado();
             sesionActual.Usuario.Empleado.Sede = new Sede();
-            var tarifas = new Tarifa[] { new Tarifa()};
-            tarifas[0].TipoEntrada = new TipoEntrada();
-            tarifas[0].TipoVisita = new TipoVisita();
+            //repositorio.getUsuarios() ; 
+            //repositorio.getSesiones();
 
-            sesionActual.Usuario.Empleado.Sede.Tarifas = tarifas;
+            var tarifa = new Tarifa();
+
+            sesionActual.Usuario.Empleado.Sede.Tarifas.Add(tarifa);
 
 
             
@@ -54,13 +55,45 @@ namespace PPAI_CU102_Grupo5
             this.CBTarifas.Visible = true;
             this.TxtTarifas.Visible = true;
             this.BtnOpcionRegistrarVentaEntrada.Visible = false;
+            this.BtnConfirmar.Visible = true; 
+
+            
         }
 
+        public void solicitarCantidadEntradas()
+        {
+            this.CBTarifas.Visible = false;
+            this.TxtTarifas.Visible = false;
+            this.BtnConfirmar.Visible = false;
+
+            NmbCantidad.Visible = true;
+            BtnConfirmarCantidad.Visible = true;
+            LblCantidad.Visible = true; 
+
+        }
 
         public void mostrarTarifasVigentes(List<string> tarifasVigentes)
         {
 
             CBTarifas.Items.Add(tarifasVigentes[0].ToString()) ;
+
+        }
+
+        internal void mostrarDatosEntrada(int cantidad, float precio ,float montoTotal )
+        {
+
+            NmbCantidad.Visible = false;
+            BtnConfirmarCantidad.Visible = false;
+            LblCantidad.Visible = false;
+
+            LblMostrarCantidad.Visible = true;
+            LblPrecio.Visible = true;
+            LblTotal.Visible = true;
+            BtnConfirmarVenta.Visible = true;
+
+            LblMostrarCantidad.Text = "Cantidad entradas : " + cantidad.ToString();
+            LblPrecio.Text = "Precio por entrada : $" + precio.ToString();
+            LblTotal.Text = "Total : $ " + montoTotal.ToString();
 
         }
 
@@ -77,6 +110,28 @@ namespace PPAI_CU102_Grupo5
         private void BtnOpcionRegistrarVentaEntrada_Click(object sender, EventArgs e)
         {
             this.opcionRegistrarVentaEntrada();
+        }
+
+        private void tomarSeleccionCantidadEntradas(int cantidad)
+        {
+            gestorRegistrarVenta.tomarSeleccionCantidadEntradas(cantidad, this);
+        }
+        private void BtnConfirmarCantidad_Click(object sender, EventArgs e)
+        {
+            int cantidad = int.Parse(NmbCantidad.Value.ToString());
+            tomarSeleccionCantidadEntradas(cantidad);
+        }
+
+        private void tomarSeleccionTarifa(string tarifa)
+        {
+            Tarifa seleccionada = sesionActual.Usuario.Empleado.Sede.Tarifas.Where(tar => tar.Id == int.Parse(tarifa)).FirstOrDefault();
+            gestorRegistrarVenta.tomarSeleccionTarifa(seleccionada,this);
+        }
+        private void BtnConfirmar_Click(object sender, EventArgs e)
+        {
+            var tarifa = CBTarifas.SelectedItem.ToString().Split(' ');
+            
+            tomarSeleccionTarifa(tarifa[0]);
         }
     }
 }
