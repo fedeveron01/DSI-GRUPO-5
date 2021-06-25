@@ -9,7 +9,6 @@ namespace PPAI_CU102_Grupo5.Controladores
 {
     public class GestorRegistrarVenta
     {
-        private PantallaRegistrarVenta pantallaRegistrarVenta;
         private Sede sedeActual;
         private Tarifa TarifaSeleccionada;
         private float montoEntrada; 
