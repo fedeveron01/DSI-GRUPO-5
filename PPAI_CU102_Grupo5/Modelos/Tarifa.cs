@@ -17,19 +17,62 @@ namespace PPAI_CU102_Grupo5.Modelos
             MontoAdicional = 0;
 
         }
-        public int Id { get; set; }
-        public TipoEntrada TipoEntrada { get; set; }
-        public TipoVisita TipoVisita { get; set; }
+        private int Id;
+        
+        private DateTime FechaFinVigencia;
+        private DateTime FechaInicioVigencia;
+        private float Monto;
+        private float MontoAdicional;
+        private TipoEntrada TipoEntrada;
+        private TipoVisita TipoVisita;
 
-        public DateTime FechaFinVigencia { get; set; }
-        public DateTime FechaInicioVigencia { get; set; }
-        public float Monto { get; set; }
-        public float MontoAdicional { get; set; }
-        public Tarifa conocerTarifa()
+        private Tarifa conocerTarifa()
         {
             return this;
         }
+        
+        public int getId()
+        {
+            return Id;
+        }
+        public void setId(int id)
+        {
+            Id = id;
+        }
 
+        public TipoVisita getTipoVisita()
+        {
+            return TipoVisita;
+        }
+        public void setFechaFinVigencia (DateTime fechaFinVigencia)
+        {
+            FechaFinVigencia = fechaFinVigencia;
+        }
+
+        public void setFechaInicioVigencia(DateTime fechaInicioVigencia)
+        {
+            FechaInicioVigencia = fechaInicioVigencia;
+        }
+
+        public void setMonto(int monto)
+        {
+            Monto = monto;
+        }
+
+        public void setTipoVisita(TipoVisita tipoVisita)
+        {
+            TipoVisita = tipoVisita;
+        }
+
+        public void setTipoEntrada(TipoEntrada tipoEntrada)
+        {
+            TipoEntrada = tipoEntrada;
+
+        }
+        public void setMontoAdicional(int montoAdicional)
+        {
+            MontoAdicional = montoAdicional;
+        }
 
         public float getMonto()
         {
@@ -41,6 +84,7 @@ namespace PPAI_CU102_Grupo5.Modelos
         {
             return MontoAdicional;
         }
+        
         public bool esVigente()
         {
             return DateTime.Now < FechaFinVigencia;

@@ -11,8 +11,22 @@ namespace PPAI_CU102_Grupo5.Modelos
 
 
         }
-        public DateTime FechaCierre { get; set; }
+        private DateTime FechaCierre;
+        private DateTime FechaInicio;
+        
         public List<DetalleExposicion> DetallesExposicion { get; set; }
+
+        public void setFechaCierre (DateTime fechaCierre)
+        {
+            FechaCierre = fechaCierre;
+        }
+
+        public void setFechaInicio (DateTime fechaInicio)
+        {
+            FechaInicio = fechaInicio;
+        }
+                    
+
         public bool esVigente()
         {
             return DateTime.Now < FechaCierre ;

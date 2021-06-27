@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using PPAI_CU102_Grupo5.Controladores;
 using PPAI_CU102_Grupo5.Modelos;
+using PPAI_CU102_Grupo5.Repositorios;
 
 namespace PPAI_CU102_Grupo5
 {
@@ -16,29 +17,28 @@ namespace PPAI_CU102_Grupo5
     {
         public GestorRegistrarVenta gestorRegistrarVenta;
         private Sesion sesionActual;
-        public PantallaRegistrarVenta()
+        public PantallaRegistrarVenta(GestorRegistrarVenta gestorRegistrarVenta, RepositorioSesion repositorioSesion )
         {
+
             InitializeComponent();
+            this.gestorRegistrarVenta = gestorRegistrarVenta;
+            sesionActual = repositorioSesion.getSesionActual();
+            //sesionActual = new Sesion();
+            //sesionActual.Usuario = new Usuario();
+            //sesionActual.Usuario.Empleado = new Empleado();
+            //sesionActual.Usuario.Empleado.Sede = new Sede();
+            //repositorio.getUsuarios() ; 
+            //repositorio.getSesiones();
+
+            //var tarifa = new Tarifa();
+
+            //sesionActual.Usuario.Empleado.Sede.Tarifas.Add(tarifa);
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            gestorRegistrarVenta = new GestorRegistrarVenta();
-            sesionActual = new Sesion();
-            sesionActual.Usuario = new Usuario();
-            sesionActual.Usuario.Empleado = new Empleado();
-            sesionActual.Usuario.Empleado.Sede = new Sede();
-            //repositorio.getUsuarios() ; 
-            //repositorio.getSesiones();
-
-            var tarifa = new Tarifa();
-
-            sesionActual.Usuario.Empleado.Sede.Tarifas.Add(tarifa);
-
-
-            
-    
-
+  
         }
 
         private void opcionRegistrarVentaEntrada()
@@ -74,8 +74,11 @@ namespace PPAI_CU102_Grupo5
 
         public void mostrarTarifasVigentes(List<string> tarifasVigentes)
         {
+          for(var i = 0; i < tarifasVigentes.Count; i++)
+            {
+                CBTarifas.Items.Add(tarifasVigentes[i].ToString());
 
-            CBTarifas.Items.Add(tarifasVigentes[0].ToString()) ;
+            }
 
         }
 
@@ -124,7 +127,7 @@ namespace PPAI_CU102_Grupo5
 
         private void tomarSeleccionTarifa(string tarifa)
         {
-            Tarifa seleccionada = sesionActual.Usuario.Empleado.Sede.Tarifas.Where(tar => tar.Id == int.Parse(tarifa)).FirstOrDefault();
+            Tarifa seleccionada = sesionActual.conocerUsuario().conocerEmpleado().conocerSede().getTarifas().Where(tar => tar.getId() == int.Parse(tarifa)).FirstOrDefault();
             gestorRegistrarVenta.tomarSeleccionTarifa(seleccionada,this);
         }
         private void BtnConfirmar_Click(object sender, EventArgs e)

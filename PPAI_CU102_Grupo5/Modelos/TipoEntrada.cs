@@ -8,16 +8,21 @@ namespace PPAI_CU102_Grupo5.Modelos
 {
     public class TipoEntrada
     {
-        public int Monto { get; set; }
+        private int Id;
+        private string Nombre;
 
-        public int getMonto()
+        public void setId (int id)
         {
-            return this.Monto;
+            Id = id;
         }
 
-        public int getMontoAdicionalGuia()
+        public void setNombre(string nombre)
         {
-            return this.Monto;
+            Nombre = nombre;
         }
+
+
+
+        
     }
 }

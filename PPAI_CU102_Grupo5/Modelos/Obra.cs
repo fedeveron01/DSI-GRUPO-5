@@ -2,7 +2,24 @@
 {
     public class Obra
     {
-        public int DuracionResumida { get; set; }
+        private int DuracionResumida;
+        private int Id;
+        private string NombreObra;
+
+        public void setDuracionResumida(int duracionResumida)
+        {
+            DuracionResumida = duracionResumida;
+        }
+
+        public void setId(int id)
+        {
+            Id = id;
+        }
+
+        public void setNombreObra (string nombreObra)
+        {
+            NombreObra = nombreObra;
+        }
 
         public int getDuracionResumida()
         {

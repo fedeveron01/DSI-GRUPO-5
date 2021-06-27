@@ -9,10 +9,21 @@ namespace PPAI_CU102_Grupo5.Modelos
     {
        public TipoVisita()
         {
-            Nombre = "Tipo visita normal";
 
         }
-        public string Nombre { get; set; }
+        private string Nombre;
+        private int Id;
+
+
+        public void setNombre(string nombre)
+        {
+            Nombre = nombre;
+        }
+
+        public void setId (int id)
+        {
+            Id = id;
+        }
 
         public string getNombre()
         {

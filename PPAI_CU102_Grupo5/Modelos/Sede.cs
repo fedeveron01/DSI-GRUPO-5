@@ -16,17 +16,77 @@ namespace PPAI_CU102_Grupo5.Modelos
             ReservasVisita = new List<ReservaVisita>();
             ReservasVisita.Add(new ReservaVisita());
 
+        }
+        private int CantidadMaximaVisitantes;
+        private int CantidadMaximaPorGuia;
+        private string Nombre;
+        private int Id;
+        private List<Tarifa> Tarifas;
+        private List<ReservaVisita> ReservasVisita;
+        private List<Exposicion> Exposiciones;
+
+
+        public void setNombre(string nombre)
+        {
+            Nombre = nombre;
 
         }
-        public int Id { get; set; }
-        public List<Tarifa> Tarifas { get; set; }
-        public List<ReservaVisita> ReservasVisita { get; set; }
-        public List<Exposicion> Exposiciones { get; set; }
+
+        public void setId (int id)
+        {
+            Id = id;
+        }
+
+        public string getNombre()
+        {
+            return Nombre;
+        }
+ 
+        public int getId()
+        {
+            return Id;
+        }
+        public int getCantidadMaximaVisitantes()
+        {
+            return CantidadMaximaVisitantes;
+        }
+
+        public void setCantidadMaximaVisitantes(int cantidadMaxima)
+        {
+            CantidadMaximaVisitantes = cantidadMaxima;
+        }
+
+        public List<Tarifa> getTarifas()
+        {
+            return Tarifas;
+        }
+
+        public void setTarifas(List<Tarifa> tarifas)
+        {
+            Tarifas = tarifas;
+        }
+
+        public void setReservasVisita(List<ReservaVisita> reservasVista)
+        {
+            ReservasVisita = reservasVista;
+        }
+
+        public void setExposiciones(List<Exposicion> exposiciones)
+        {
+            Exposiciones = exposiciones;
+        }
+        public void setCantidadMaximaPorGuia(int cantidadMaximaPorGuia)
+        {
+            CantidadMaximaPorGuia = cantidadMaximaPorGuia;
+        }
+
         public List<string> buscarTarifasVigentes()
         {
             var tarifasAMostrar = new List<string> { };
 
             var detalleTarifa = "";
+
+
 
             //buscar vigentes
             for (int i = 0; i < Tarifas.Count; i++)
@@ -34,8 +94,8 @@ namespace PPAI_CU102_Grupo5.Modelos
                 if (Tarifas[i].esVigente())
                 {
                     var tarifa = Tarifas[i];
-                    detalleTarifa += Tarifas[i].Id;
-                    detalleTarifa += " Tipo de visita : " + tarifa.TipoVisita.getNombre();
+                    detalleTarifa += Tarifas[i].getId();
+                    detalleTarifa += " Tipo de visita : " + tarifa.getTipoVisita().getNombre().ToString();
                     detalleTarifa += "Monto: $" + tarifa.getMonto().ToString();
                     detalleTarifa += "Monto adicional : $" + tarifa.getMontoAdicionalGuia().ToString();
 
@@ -46,6 +106,7 @@ namespace PPAI_CU102_Grupo5.Modelos
             return tarifasAMostrar;
 
         }
+
 
         public int calcularDuracionExposicionesVigentes()
         {
