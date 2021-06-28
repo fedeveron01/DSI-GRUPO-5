@@ -121,10 +121,14 @@ namespace PPAI_CU102_Grupo5.Controladores
             var entradas = generarEntradas(cantidadIngresada,nro);
             imprimirEntradas(entradas);
             actualizarVistasEnPantallas(cantidadIngresada);
-
+            finCU(pantallaRegistrarVenta);
         }
 
-
+        private void finCU(PantallaRegistrarVenta pantallaRegistrarVenta)
+        {
+            MessageBox.Show("Venta realizada con éxito");
+            pantallaRegistrarVenta.Close();
+        }
         private void actualizarVistasEnPantallas(int cantidadIngresada)
         {
 
@@ -133,7 +137,7 @@ namespace PPAI_CU102_Grupo5.Controladores
            
             
             pantallaSala.Visible = true;
-            for (var i = 0; i < 5; i++)
+            for (var i = 1; i < 5; i++)
             {
                 pantallaSala.actualizarPantalla(i,sedeActual.getCantidadMaximaVisitantes() + cantidadIngresada - cantidadMaxima, sedeActual.getCantidadMaximaVisitantes());
                 
