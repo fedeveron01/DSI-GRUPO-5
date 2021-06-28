@@ -17,9 +17,15 @@ namespace PPAI_CU102_Grupo5.Pantallas
             InitializeComponent();
         }
 
-        internal void actualizarPantalla()
+        internal void actualizarPantalla(int cantidad, int capacidad )
         {
-            throw new NotImplementedException();
+            LblCantidad.Text += cantidad;
+            LblCapacidad.Text += capacidad;
+        }
+
+        private void PantallaEntrada_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

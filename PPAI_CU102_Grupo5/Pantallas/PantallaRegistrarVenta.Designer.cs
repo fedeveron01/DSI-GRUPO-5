@@ -29,6 +29,7 @@ namespace PPAI_CU102_Grupo5
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PantallaRegistrarVenta));
             this.CBTarifas = new System.Windows.Forms.ComboBox();
             this.TxtTarifas = new System.Windows.Forms.Label();
             this.BtnOpcionRegistrarVentaEntrada = new System.Windows.Forms.Button();
@@ -43,16 +44,18 @@ namespace PPAI_CU102_Grupo5
             this.LblPrecio = new System.Windows.Forms.Label();
             this.BtnConfirmarVenta = new System.Windows.Forms.Button();
             this.LblTotal = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NmbCantidad)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // CBTarifas
             // 
             this.CBTarifas.FormattingEnabled = true;
-            this.CBTarifas.Location = new System.Drawing.Point(327, 157);
+            this.CBTarifas.Location = new System.Drawing.Point(210, 157);
             this.CBTarifas.Name = "CBTarifas";
-            this.CBTarifas.Size = new System.Drawing.Size(166, 23);
+            this.CBTarifas.Size = new System.Drawing.Size(309, 23);
             this.CBTarifas.TabIndex = 0;
             this.CBTarifas.Visible = false;
             // 
@@ -60,7 +63,7 @@ namespace PPAI_CU102_Grupo5
             // 
             this.TxtTarifas.AutoSize = true;
             this.TxtTarifas.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TxtTarifas.Location = new System.Drawing.Point(247, 156);
+            this.TxtTarifas.Location = new System.Drawing.Point(142, 157);
             this.TxtTarifas.Name = "TxtTarifas";
             this.TxtTarifas.Size = new System.Drawing.Size(62, 20);
             this.TxtTarifas.TabIndex = 1;
@@ -200,6 +203,16 @@ namespace PPAI_CU102_Grupo5
             this.LblTotal.Text = "Total : $";
             this.LblTotal.Visible = false;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(0, 27);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(800, 430);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 13;
+            this.pictureBox1.TabStop = false;
+            // 
             // PantallaRegistrarVenta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -217,12 +230,14 @@ namespace PPAI_CU102_Grupo5
             this.Controls.Add(this.TxtTarifas);
             this.Controls.Add(this.CBTarifas);
             this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.pictureBox1);
             this.Name = "PantallaRegistrarVenta";
             this.Text = "Confirmar compra";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NmbCantidad)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -257,6 +272,7 @@ namespace PPAI_CU102_Grupo5
         private System.Windows.Forms.Label LblPrecio;
         private System.Windows.Forms.Button BtnConfirmarVenta;
         private System.Windows.Forms.Label LblTotal;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 

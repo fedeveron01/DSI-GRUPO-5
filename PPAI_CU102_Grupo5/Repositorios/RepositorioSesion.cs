@@ -83,6 +83,7 @@ namespace PPAI_CU102_Grupo5.Repositorios
                     tar.setFechaInicioVigencia(DateTime.Parse(filaTarifas["fechaInicioVigencia"].ToString()));
                     tar.setMonto(Int32.Parse(filaTarifas["monto"].ToString()));
                     tar.setMontoAdicional(Int32.Parse(filaTarifas["montoAdicionalGuia"].ToString()));
+                    tar.setId(Int32.Parse(filaTarifas["id"].ToString()));
 
                     var tipoEntrada = new TipoEntrada();
                     tipoEntrada.setNombre(filaTarifas["nombre"].ToString());

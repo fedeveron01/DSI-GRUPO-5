@@ -129,8 +129,22 @@ namespace PPAI_CU102_Grupo5.Controladores
         {
 
             pantallaEntrada.Visible = true;
-            pantallaEntrada.actualizarPantalla();
+            pantallaEntrada.actualizarPantalla(sedeActual.getCantidadMaximaVisitantes()+cantidadIngresada-cantidadMaxima,sedeActual.getCantidadMaximaVisitantes());
+           
+            
+            pantallaSala.Visible = true;
+            for (var i = 0; i < 5; i++)
+            {
+                pantallaSala.actualizarPantalla(i,sedeActual.getCantidadMaximaVisitantes() + cantidadIngresada - cantidadMaxima, sedeActual.getCantidadMaximaVisitantes());
+                
+
+            }
+
+
         }
+
+    
+
         private void imprimirEntradas(List<Entrada> entradas)
         {
             impresora.Visible = true;

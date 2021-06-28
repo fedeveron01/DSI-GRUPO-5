@@ -69,6 +69,8 @@ namespace PPAI_CU102_Grupo5
           for(var i = 0; i < tarifasVigentes.Count; i++)
             {
                 CBTarifas.Items.Add(tarifasVigentes[i].ToString());
+                
+                
 
             }
 

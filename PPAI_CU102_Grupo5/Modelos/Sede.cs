@@ -90,7 +90,6 @@ namespace PPAI_CU102_Grupo5.Modelos
         {
             var tarifasAMostrar = new List<string> { };
 
-            var detalleTarifa = "";
 
 
 
@@ -99,9 +98,13 @@ namespace PPAI_CU102_Grupo5.Modelos
             {
                 if (Tarifas[i].esVigente())
                 {
+                    var detalleTarifa = "";
+
                     var tarifa = Tarifas[i];
                     detalleTarifa += Tarifas[i].getId();
-                    detalleTarifa += " Tipo de visita : " + tarifa.getTipoVisita().getNombre().ToString();
+                    detalleTarifa += " - " +tarifa.getTipoEntrada().getNombre().ToString();
+
+                    detalleTarifa += " - " + tarifa.getTipoVisita().getNombre().ToString();
                     detalleTarifa += "Monto: $" + tarifa.getMonto().ToString();
                     detalleTarifa += "Monto adicional : $" + tarifa.getMontoAdicionalGuia().ToString();
 

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "4eCuwN6NQLTX+yFio4FTPCjNHzbzZ+Gom9iuSCbJ7t1E1W6dMNgFuLGFvZx/7AqocYWMPmXuD26DRJNP89qSZw==",
+  "dgSpecHash": "Iq3gtA+cIza/dXrL3i6BTm+dzRwoDY4svpxV14XTf3WxlOUZYDW0gKC0tijCuZ0H/zaFWzdnJEgzV61B/sV09A==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Fede\\Documents\\DSI TP1\\PPAI_CU102_Grupo5\\PPAI_CU102_Grupo5.csproj",
+  "projectFilePath": "C:\\Users\\Fede\\Documents\\DSI TP1\\DSI-GRUPO-5\\PPAI_CU102_Grupo5\\PPAI_CU102_Grupo5.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Fede\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\Fede\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",

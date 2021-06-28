@@ -51,6 +51,14 @@ namespace PPAI_CU102_Grupo5.Repositorios
             return tabla;
         }
 
+        public void insertar(string comando)
+        {
+            conectar();
+            Cmd.CommandText = comando;
+            Cmd.ExecuteNonQuery();
+            desconectar();
+        }
+
 
         public void desconectar()
         {

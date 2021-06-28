@@ -73,6 +73,10 @@ namespace PPAI_CU102_Grupo5.Modelos
             return TipoVisita;
         }
 
+        public TipoEntrada getTipoEntrada()
+        {
+            return TipoEntrada;
+        }
         private Tarifa conocerTarifa()
         {
             return this;

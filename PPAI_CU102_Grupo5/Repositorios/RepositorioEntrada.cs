@@ -41,15 +41,16 @@ namespace PPAI_CU102_Grupo5.Repositorios
         public static void generarEntradas(List<Entrada> nuevasEntradas)
         {
             BaseDatos bd = new BaseDatos();
-
-            for (var i =0; i < nuevasEntradas.Count; i++)
+            string insert = "";
+            for (var i = 0; i < nuevasEntradas.Count; i++)
             {
-                var nroEntrada = nuevasEntradas[i].getNumero();
-
-                var consulta = "INSERT INTO ENTRADA () VALUES ";
-
+                insert += @"INSERT INTO Entrada(nroEntrada, monto, horaVenta, fechaVenta) VALUES(" +
+                    nuevasEntradas[i].getNumero().ToString() + ',' +
+                    nuevasEntradas[i].getMonto().ToString() + ',' +
+                    "'"+nuevasEntradas[i].getHoraVenta().ToString() + "'," +
+                    "'"+nuevasEntradas[i].getFechaVenta().ToString("yyyy-MM-dd") + "');";
             }
-
+            bd.insertar(insert);
         }
     }
 

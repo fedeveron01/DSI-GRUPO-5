@@ -18,7 +18,7 @@ namespace PPAI_CU102_Grupo5.Modelos
         {
             NumeroEntrada = numeroEntrada;
             FechaVenta = DateTime.Now.Date;
-            HoraVenta = DateTime.Now.Hour.ToString();
+            HoraVenta = DateTime.Now.ToString("hh:mm");
             Monto = montoEntrada;
         }
 

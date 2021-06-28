@@ -25,6 +25,10 @@ namespace PPAI_CU102_Grupo5.Modelos
 
         // Fin Seteo
 
+        public string getNombre()
+        {
+            return Nombre;
+        }
 
     }
 }

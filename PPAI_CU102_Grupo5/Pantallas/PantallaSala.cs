@@ -16,5 +16,27 @@ namespace PPAI_CU102_Grupo5.Pantallas
         {
             InitializeComponent();
         }
+
+        internal void actualizarPantalla(int nro,int cantidad, int capacidad)
+        {
+            LblCantidad.Text = "Cantidad actual de visitantes : "+cantidad;
+            LblCapacidad.Text = "Capacidad de la sede :"+capacidad;
+            MessageBox.Show("Sala numero " + nro);
+        }
+
+        private void PantallaSala_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
