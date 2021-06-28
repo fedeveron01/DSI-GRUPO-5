@@ -17,9 +17,15 @@ namespace PPAI_CU102_Grupo5.Controladores
         private List<Entrada> entradas;
         private float montoEntrada;
         private Impresora impresora;
+        private PantallaEntrada pantallaEntrada;
+        private PantallaSala pantallaSala;
+        private int cantidadMaxima;
+
         public GestorRegistrarVenta(Impresora impresora,PantallaEntrada pantallaEntrada,PantallaSala pantallaSala)
         {
             this.impresora = impresora;
+            this.pantallaSala = pantallaSala;
+            this.pantallaEntrada = pantallaEntrada;
             entradas = RepositorioEntrada.getEntradas();
         }
 
@@ -76,7 +82,7 @@ namespace PPAI_CU102_Grupo5.Controladores
         private void buscarCapacidadSede(int cantidad, PantallaRegistrarVenta pantallaRegistrarVenta)
         {
             var fecha = obtenerFechaHoraActual();
-            int cantidadMaxima = sedeActual.getCantidadMaximaVisitantes()- sedeActual.getCantidadMaximaVisitantes(fecha) ;
+            cantidadMaxima = sedeActual.getCantidadMaximaVisitantes()- sedeActual.getCantidadMaximaVisitantes(fecha) ;
             if (validarCantidadVisitantes(cantidad, cantidadMaxima))
             {
                 var monto = calcularMontoAPagar(cantidad);
@@ -114,9 +120,17 @@ namespace PPAI_CU102_Grupo5.Controladores
             var nro= buscarUltimoNumeroEntrada();
             var entradas = generarEntradas(cantidadIngresada,nro);
             imprimirEntradas(entradas);
+            actualizarVistasEnPantallas(cantidadIngresada);
 
         }
 
+
+        private void actualizarVistasEnPantallas(int cantidadIngresada)
+        {
+
+            pantallaEntrada.Visible = true;
+            pantallaEntrada.actualizarPantalla();
+        }
         private void imprimirEntradas(List<Entrada> entradas)
         {
             impresora.Visible = true;

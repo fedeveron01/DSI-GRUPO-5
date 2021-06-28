@@ -16,5 +16,10 @@ namespace PPAI_CU102_Grupo5.Pantallas
         {
             InitializeComponent();
         }
+
+        internal void actualizarPantalla()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
