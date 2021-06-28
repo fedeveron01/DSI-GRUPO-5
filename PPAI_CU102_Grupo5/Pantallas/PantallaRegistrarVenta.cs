@@ -47,7 +47,8 @@ namespace PPAI_CU102_Grupo5
             this.CBTarifas.Visible = true;
             this.TxtTarifas.Visible = true;
             this.BtnOpcionRegistrarVentaEntrada.Visible = false;
-            this.BtnConfirmar.Visible = true; 
+            this.BtnConfirmar.Visible = true;
+            this.BtnCancelar.Visible = true;
 
             
         }
@@ -144,6 +145,18 @@ namespace PPAI_CU102_Grupo5
         private void BtnConfirmarVenta_Click(object sender, EventArgs e)
         {
             tomarConfirmacion();
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BtnCancelar_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("La venta ha sido cancelada");
+            this.Close();
+
         }
     }
 }
