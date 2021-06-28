@@ -15,14 +15,24 @@ namespace PPAI_CU102_Grupo5.Modelos
 
         private string LugarAsignado;
 
+
+        // Inicio Seteo
+
+        public void setObra(Obra obra)
+        {
+            Obra = obra;
+        }
         public void setLugarAsignado(string lugarAsignado)
         {
             LugarAsignado = lugarAsignado;
         }
 
+       
         public int buscarDuracionResumidaObra()
         {
             return Obra.getDuracionResumida();
         }
+
+        // fin Seteo 
     }
 }

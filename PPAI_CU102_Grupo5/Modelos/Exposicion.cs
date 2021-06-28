@@ -11,26 +11,59 @@ namespace PPAI_CU102_Grupo5.Modelos
 
 
         }
-        private DateTime FechaCierre;
+        private DateTime? FechaCierre;
         private DateTime FechaInicio;
-        
-        public List<DetalleExposicion> DetallesExposicion { get; set; }
+        private int IdExposicion;
+        private string Nombre;
+
+        private List<DetalleExposicion> DetallesExposicion;
+
+
+        // Inicio Seteo
 
         public void setFechaCierre (DateTime fechaCierre)
         {
             FechaCierre = fechaCierre;
         }
 
+        public void setIdExposicion(int idExposicion)
+        {
+            IdExposicion = idExposicion;
+        }
+        public void setDetalleExposicion(List<DetalleExposicion> detalleExposicion)
+        {
+            DetallesExposicion = detalleExposicion; 
+        }
+        
         public void setFechaInicio (DateTime fechaInicio)
         {
             FechaInicio = fechaInicio;
         }
-                    
 
+        public void setNombre(string nombre)
+        {
+            Nombre = nombre;
+        }
+
+    
+
+        // Fin Seteo
+
+        
+        // Get id de la exposicion
+        public int getIdExposicion()
+        {
+            return IdExposicion;
+        }
+
+
+        //  Valida que sean exposiciones vigentes 
         public bool esVigente()
         {
-            return DateTime.Now < FechaCierre ;
+            return DateTime.Now <= FechaCierre  || FechaCierre==null;
         }
+
+
 
         public int calcularDuracionObrasExpuestas()
         {

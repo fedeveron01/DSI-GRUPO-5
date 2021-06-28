@@ -13,6 +13,47 @@ namespace PPAI_CU102_Grupo5.Modelos
         private int NumeroReserva { get; set; }
         private DateTime? HoraFinReal { get; set; }
         private DateTime? HoraInicialReal { get; set; }
+
+        // Inicio Seteo
+
+        public void setCantidadAlumnos(int cantidadAlumnos)
+        {
+            CantidadAlumnos = cantidadAlumnos;
+        }
+
+        public void setCantidadConfirmada(int cantidadConfirmada)
+        {
+            CantidadConfirmada = cantidadConfirmada;
+        }
+
+        public void setFechaHoraCreacion(DateTime fechaHoraCreacion)
+        {
+            FechaHoraCreacion = fechaHoraCreacion;
+        }
+
+        public void setFechaHoraReserva(DateTime fechaHoraReserva)
+        {
+            FechaHoraReserva = fechaHoraReserva;
+        }
+
+        public void setNumeroReserva(int numeroReserva)
+        {
+            NumeroReserva = numeroReserva;
+        }
+
+        public void setHoraFinReal(DateTime horaFinReal)
+        {
+            HoraFinReal = horaFinReal;
+        }
+
+        public void setHoraInicialReal(DateTime horaInicialReal)
+        {
+           HoraInicialReal = horaInicialReal;
+        }
+
+        // Fin Seteo
+
+
         public bool esFechaHora(DateTime fecha)
         {
             return fecha >= FechaHoraReserva ; 

@@ -26,6 +26,8 @@ namespace PPAI_CU102_Grupo5.Modelos
         private List<Exposicion> Exposiciones;
 
 
+        // Inicio Seteo
+
         public void setNombre(string nombre)
         {
             Nombre = nombre;
@@ -80,6 +82,10 @@ namespace PPAI_CU102_Grupo5.Modelos
             CantidadMaximaPorGuia = cantidadMaximaPorGuia;
         }
 
+        // Fin Seteo
+
+
+        // Busca y retorna una lista de tarifas vigentes 
         public List<string> buscarTarifasVigentes()
         {
             var tarifasAMostrar = new List<string> { };
@@ -108,6 +114,8 @@ namespace PPAI_CU102_Grupo5.Modelos
         }
 
 
+
+        // Calcula la duracion estimada de las exposiciones vigentes y lo retorna 
         public int calcularDuracionExposicionesVigentes()
         {
             List<Exposicion> vigentes = new List<Exposicion>();
@@ -128,6 +136,9 @@ namespace PPAI_CU102_Grupo5.Modelos
             return contador;
         }
 
+
+
+        // Calcula la cantidad de visitantes dentro del museo
         public int getCantidadMaximaVisitantes(DateTime fechaActual)
         {
             var cantidadConfirmada = 0;

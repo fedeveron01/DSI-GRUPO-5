@@ -17,8 +17,9 @@ namespace PPAI_CU102_Grupo5.Modelos
             MontoAdicional = 0;
 
         }
+
+
         private int Id;
-        
         private DateTime FechaFinVigencia;
         private DateTime FechaInicioVigencia;
         private float Monto;
@@ -26,24 +27,14 @@ namespace PPAI_CU102_Grupo5.Modelos
         private TipoEntrada TipoEntrada;
         private TipoVisita TipoVisita;
 
-        private Tarifa conocerTarifa()
-        {
-            return this;
-        }
-        
-        public int getId()
-        {
-            return Id;
-        }
+
+        // Inicio Seteo
+
         public void setId(int id)
         {
             Id = id;
         }
 
-        public TipoVisita getTipoVisita()
-        {
-            return TipoVisita;
-        }
         public void setFechaFinVigencia (DateTime fechaFinVigencia)
         {
             FechaFinVigencia = fechaFinVigencia;
@@ -72,6 +63,24 @@ namespace PPAI_CU102_Grupo5.Modelos
         public void setMontoAdicional(int montoAdicional)
         {
             MontoAdicional = montoAdicional;
+        }
+
+        // Fin Seteo
+
+
+        public TipoVisita getTipoVisita()
+        {
+            return TipoVisita;
+        }
+
+        private Tarifa conocerTarifa()
+        {
+            return this;
+        }
+
+        public int getId()
+        {
+            return Id;
         }
 
         public float getMonto()

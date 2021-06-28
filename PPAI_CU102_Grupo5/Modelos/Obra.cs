@@ -6,6 +6,8 @@
         private int Id;
         private string NombreObra;
 
+        // Inicio Seteo
+
         public void setDuracionResumida(int duracionResumida)
         {
             DuracionResumida = duracionResumida;
@@ -25,5 +27,7 @@
         {
             return DuracionResumida; 
         }
+
+        // Fin Seteo
     }
 }

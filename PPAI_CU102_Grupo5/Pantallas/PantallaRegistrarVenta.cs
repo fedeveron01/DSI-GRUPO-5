@@ -17,22 +17,14 @@ namespace PPAI_CU102_Grupo5
     {
         public GestorRegistrarVenta gestorRegistrarVenta;
         private Sesion sesionActual;
-        public PantallaRegistrarVenta(GestorRegistrarVenta gestorRegistrarVenta, RepositorioSesion repositorioSesion )
+        private int cantidadEntradasIngresadas;
+        public PantallaRegistrarVenta(GestorRegistrarVenta gestorRegistrarVenta, RepositorioSesion repositorioSesion)
         {
 
             InitializeComponent();
             this.gestorRegistrarVenta = gestorRegistrarVenta;
             sesionActual = repositorioSesion.getSesionActual();
-            //sesionActual = new Sesion();
-            //sesionActual.Usuario = new Usuario();
-            //sesionActual.Usuario.Empleado = new Empleado();
-            //sesionActual.Usuario.Empleado.Sede = new Sede();
-            //repositorio.getUsuarios() ; 
-            //repositorio.getSesiones();
-
-            //var tarifa = new Tarifa();
-
-            //sesionActual.Usuario.Empleado.Sede.Tarifas.Add(tarifa);
+     
 
         }
 
@@ -92,14 +84,19 @@ namespace PPAI_CU102_Grupo5
             LblMostrarCantidad.Visible = true;
             LblPrecio.Visible = true;
             LblTotal.Visible = true;
-            BtnConfirmarVenta.Visible = true;
+            
 
             LblMostrarCantidad.Text = "Cantidad entradas : " + cantidad.ToString();
             LblPrecio.Text = "Precio por entrada : $" + precio.ToString();
             LblTotal.Text = "Total : $ " + montoTotal.ToString();
+            solicitarConfirmacion();
 
         }
 
+        private void solicitarConfirmacion()
+        {
+            BtnConfirmarVenta.Visible = true;
+        }
         private void toolStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
 
@@ -117,12 +114,13 @@ namespace PPAI_CU102_Grupo5
 
         private void tomarSeleccionCantidadEntradas(int cantidad)
         {
+
             gestorRegistrarVenta.tomarSeleccionCantidadEntradas(cantidad, this);
         }
         private void BtnConfirmarCantidad_Click(object sender, EventArgs e)
         {
-            int cantidad = int.Parse(NmbCantidad.Value.ToString());
-            tomarSeleccionCantidadEntradas(cantidad);
+            cantidadEntradasIngresadas = int.Parse(NmbCantidad.Value.ToString());
+            tomarSeleccionCantidadEntradas(cantidadEntradasIngresadas);
         }
 
         private void tomarSeleccionTarifa(string tarifa)
@@ -135,6 +133,15 @@ namespace PPAI_CU102_Grupo5
             var tarifa = CBTarifas.SelectedItem.ToString().Split(' ');
             
             tomarSeleccionTarifa(tarifa[0]);
+        }
+
+        public void tomarConfirmacion()
+        {
+            gestorRegistrarVenta.tomarConfirmacion(cantidadEntradasIngresadas, this);
+        }
+        private void BtnConfirmarVenta_Click(object sender, EventArgs e)
+        {
+            tomarConfirmacion();
         }
     }
 }

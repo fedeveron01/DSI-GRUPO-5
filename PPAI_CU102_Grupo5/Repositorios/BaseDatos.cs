@@ -52,7 +52,7 @@ namespace PPAI_CU102_Grupo5.Repositorios
         }
 
 
-        private void desconectar()
+        public void desconectar()
         {
                 Conexion.Close();
      

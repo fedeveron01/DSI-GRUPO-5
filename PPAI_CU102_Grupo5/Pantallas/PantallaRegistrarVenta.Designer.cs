@@ -187,6 +187,7 @@ namespace PPAI_CU102_Grupo5
             this.BtnConfirmarVenta.Text = "Confirmar venta";
             this.BtnConfirmarVenta.UseVisualStyleBackColor = false;
             this.BtnConfirmarVenta.Visible = false;
+            this.BtnConfirmarVenta.Click += new System.EventHandler(this.BtnConfirmarVenta_Click);
             // 
             // LblTotal
             // 

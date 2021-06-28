@@ -14,6 +14,7 @@ namespace PPAI_CU102_Grupo5.Modelos
         private string Nombre;
         private int Id;
 
+        // Inicio Seteo
 
         public void setNombre(string nombre)
         {
@@ -24,6 +25,9 @@ namespace PPAI_CU102_Grupo5.Modelos
         {
             Id = id;
         }
+
+        // Fin Seteo
+
 
         public string getNombre()
         {

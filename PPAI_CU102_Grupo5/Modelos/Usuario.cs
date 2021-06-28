@@ -16,10 +16,7 @@ namespace PPAI_CU102_Grupo5.Modelos
         private Empleado Empleado;
 
 
-        public int getCaducidad()
-        {
-            return Caducidad;
-        }
+        // Inicio Seteo
 
         public void setCaducidad(int caducidad)
         {
@@ -27,10 +24,6 @@ namespace PPAI_CU102_Grupo5.Modelos
 
         }
 
-        public string getContraseña()
-        {
-            return Contraseña;
-        } 
         public void setContraseña(string contraseña)
         {
             Contraseña = contraseña;
@@ -45,10 +38,26 @@ namespace PPAI_CU102_Grupo5.Modelos
         {
             Nombre = nombre;
         }
+
+        // Fin Seteo
+
+
         public Empleado conocerEmpleado()
         {
             return this.Empleado;
         }
-     
+
+        // Get de datos de usuario
+
+        public string getContraseña()
+        {
+            return Contraseña;
+        }
+
+        public int getCaducidad()
+        {
+            return Caducidad;
+        }
+
     }
 }

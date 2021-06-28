@@ -15,6 +15,8 @@ namespace PPAI_CU102_Grupo5.Modelos
         private string HoraInicio;
 
 
+        // Inicio Seteo
+
         public void setFechaFin(DateTime fechaFin)
         {
             FechaFin = fechaFin;
@@ -33,6 +35,11 @@ namespace PPAI_CU102_Grupo5.Modelos
         {
             HoraInicio = horaInicio;
         }
+
+
+        // Fin Seteo
+
+
 
         public Usuario conocerUsuario()
         {

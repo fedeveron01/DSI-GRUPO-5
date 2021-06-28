@@ -23,6 +23,9 @@ namespace PPAI_CU102_Grupo5.Modelos
         {
 
         }
+
+        // Inicio Seteo
+
         public void setDni(int dni)
         {
             Dni = dni;
@@ -66,15 +69,15 @@ namespace PPAI_CU102_Grupo5.Modelos
             Telefono = telefono;
         }
 
-
-
-
-
   
         public void setSede(Sede sede)
         {
             Sede = sede; 
         }
+
+        // Fin Seteo
+
+
         public Sede conocerSede()
         {
             return this.Sede;

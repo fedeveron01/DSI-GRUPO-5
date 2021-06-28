@@ -4,7 +4,13 @@
     <Compile Update="Pantallas\Impresora.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Pantallas\PantallaEntrada.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Pantallas\PantallaRegistrarVenta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Pantallas\PantallaSala.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>
