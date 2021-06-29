@@ -11,6 +11,7 @@ namespace PPAI_CU102_Grupo5.Repositorios
 {
     public class RepositorioSesion
     { 
+        //Busca las sesiones en el servidor 
         public void getSesiones()
         {
               BaseDatos bd = new BaseDatos();
@@ -30,13 +31,15 @@ namespace PPAI_CU102_Grupo5.Repositorios
 
         public Sesion getSesionActual()
         {
+            //Busca en el servidor la sesion actual para encontrar la sede
             BaseDatos bd = new BaseDatos();
-            var consulta = "SELECT * FROM SESION INNER JOIN USUARIO u ON usuario=u.id INNER JOIN Empleado e ON u.empleado = e.dni INNER JOIN SEDE s ON e.sede=s.id WHERE fechaFin is Null";
+            var consulta = "SELECT * FROM SESION INNER JOIN USUARIO u ON usuario=u.id INNER JOIN Empleado e ON u.empleado = e.dni INNER JOIN SEDE s ON e.sede=s.idSede WHERE fechaFin is Null";
             DataTable res = bd.consulta(consulta);
             var sesion = new Sesion();
             var usuario = new Usuario();
             var empleado = new Empleado();
             var sede = new Sede();
+
             // traer resultado de tabla de base de datos al codigo
             foreach (DataRow resultado in res.Rows)
             {
@@ -60,7 +63,7 @@ namespace PPAI_CU102_Grupo5.Repositorios
 
                 usuario.setEmpleado(empleado);
 
-                sede.setId(Int32.Parse(resultado["id"].ToString()));
+                sede.setId(Int32.Parse(resultado["idSede"].ToString()));
 
                 sede.setNombre(resultado["nombreSede"].ToString());
                 sede.setCantidadMaximaVisitantes(Int32.Parse(resultado["cantMaximaVisitantes"].ToString()));

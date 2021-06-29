@@ -49,6 +49,7 @@ namespace PPAI_CU102_Grupo5
             this.BtnOpcionRegistrarVentaEntrada.Visible = false;
             this.BtnConfirmar.Visible = true;
             this.BtnCancelar.Visible = true;
+            this.CheckGuia.Visible = true;
 
             
         }
@@ -58,6 +59,7 @@ namespace PPAI_CU102_Grupo5
             this.CBTarifas.Visible = false;
             this.TxtTarifas.Visible = false;
             this.BtnConfirmar.Visible = false;
+            this.CheckGuia.Visible = false;
 
             NmbCantidad.Visible = true;
             BtnConfirmarCantidad.Visible = true;
@@ -129,7 +131,8 @@ namespace PPAI_CU102_Grupo5
         private void tomarSeleccionTarifa(string tarifa)
         {
             Tarifa seleccionada = sesionActual.conocerUsuario().conocerEmpleado().conocerSede().getTarifas().Where(tar => tar.getId() == int.Parse(tarifa)).FirstOrDefault();
-            gestorRegistrarVenta.tomarSeleccionTarifa(seleccionada,this);
+            var conGuia = CheckGuia.Checked;
+            gestorRegistrarVenta.tomarSeleccionTarifa(seleccionada,conGuia,this);
         }
         private void BtnConfirmar_Click(object sender, EventArgs e)
         {

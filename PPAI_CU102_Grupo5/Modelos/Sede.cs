@@ -105,8 +105,8 @@ namespace PPAI_CU102_Grupo5.Modelos
                     detalleTarifa += " - " +tarifa.getTipoEntrada().getNombre().ToString();
 
                     detalleTarifa += " - " + tarifa.getTipoVisita().getNombre().ToString();
-                    detalleTarifa += "Monto: $" + tarifa.getMonto().ToString();
-                    detalleTarifa += "Monto adicional : $" + tarifa.getMontoAdicionalGuia().ToString();
+                    detalleTarifa += " Monto: $" + tarifa.getMonto().ToString();
+                    detalleTarifa += " Monto adicional : $" + tarifa.getMontoAdicionalGuia().ToString();
 
                     tarifasAMostrar.Add(detalleTarifa);
 

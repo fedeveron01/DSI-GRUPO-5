@@ -36,21 +36,21 @@ namespace PPAI_CU102_Grupo5.Modelos
             HoraInicio = horaInicio;
         }
 
+        public void setUsuario(Usuario usuario)
+        {
+            Usuario = usuario;
+        }
+
 
         // Fin Seteo
 
 
-
+        // Retorna un Usuario
         public Usuario conocerUsuario()
         {
             return Usuario;
         }
     
-
-        public void setUsuario(Usuario usuario)
-        {
-            Usuario = usuario;
-        }
     }
 
 }

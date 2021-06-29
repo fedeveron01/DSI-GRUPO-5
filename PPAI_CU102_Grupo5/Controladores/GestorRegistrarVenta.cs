@@ -20,6 +20,7 @@ namespace PPAI_CU102_Grupo5.Controladores
         private PantallaEntrada pantallaEntrada;
         private PantallaSala pantallaSala;
         private int cantidadMaxima;
+        private bool servicioGuia;
 
         public GestorRegistrarVenta(Impresora impresora,PantallaEntrada pantallaEntrada,PantallaSala pantallaSala)
         {
@@ -29,11 +30,14 @@ namespace PPAI_CU102_Grupo5.Controladores
             entradas = RepositorioEntrada.getEntradas();
         }
 
-
+        
         public void opcionRegistrarVentaEntrada(Sesion sesionActual, PantallaRegistrarVenta pantallaRegistrarVenta)
         {
+            // Busca la sede actual desde la sesion
             sedeActual = buscarSedeActual(sesionActual);
             
+            // Guarda todas las tarifas vigentes y existentes de la sede actual y
+            // las muestra en la pantalla para que seleccione la tarifa
             var tarifasVigentes = buscarTarifasVigentesYExistentes(sedeActual);
             pantallaRegistrarVenta.mostrarTarifasVigentes(tarifasVigentes);
 
@@ -62,8 +66,9 @@ namespace PPAI_CU102_Grupo5.Controladores
 
 
         // Toma la seleccion de tarifa calcula la duracion estimada y solicita la cantidad de entradas
-        public void tomarSeleccionTarifa(Tarifa seleccionada,PantallaRegistrarVenta pantalla)
+        public void tomarSeleccionTarifa(Tarifa seleccionada,bool conGuia,PantallaRegistrarVenta pantalla)
         {
+            servicioGuia = conGuia;
             TarifaSeleccionada = seleccionada;
             var duracion = calcularDuracionEstimada();
         //  MessageBox.Show(duracion.ToString());
@@ -88,9 +93,14 @@ namespace PPAI_CU102_Grupo5.Controladores
                 var monto = calcularMontoAPagar(cantidad);
                 pantallaRegistrarVenta.mostrarDatosEntrada(cantidad,montoEntrada,monto);
             }
-            else
+            else if(cantidad > 0)
             {
                 MessageBox.Show("La cantidad de entradas ingresadas supera la capacidad disponible de la sede "+sedeActual.getNombre() +" ( "+cantidadMaxima.ToString()+ " )" );
+            }
+            else
+            {
+                MessageBox.Show("La cantidad de entradas debe ser mayor a 0");
+
             }
 
         }
@@ -99,7 +109,17 @@ namespace PPAI_CU102_Grupo5.Controladores
         // Busca el monto por tarifa sumando el monto adicional en caso de tener y lo retorna
         private float calcularMontoAPagar(int cantidad)
         {
-            montoEntrada = (TarifaSeleccionada.getMonto() + TarifaSeleccionada.getMontoAdicionalGuia());
+            if (servicioGuia) 
+            {
+                montoEntrada = (TarifaSeleccionada.getMonto() + TarifaSeleccionada.getMontoAdicionalGuia());
+
+
+            }
+            else
+            {
+                montoEntrada = (TarifaSeleccionada.getMonto());
+
+            }
             float monto =  montoEntrada * cantidad;
             return monto;
         }
@@ -108,34 +128,51 @@ namespace PPAI_CU102_Grupo5.Controladores
         // Valida que una cantidad sea menor o igual a otra
         private bool validarCantidadVisitantes(int cantidadIngresada, int cantidadMaxima)
         {
-            return cantidadIngresada <= cantidadMaxima;
+            return cantidadIngresada <= cantidadMaxima && cantidadIngresada > 0;
         }
-         
+        
+
+        // Toma la seleccion de la cantidad de entradas y comienza a buscar la capacidad de la sede
         public void tomarSeleccionCantidadEntradas(int cantidad, PantallaRegistrarVenta pantallaRegistrarVenta)
         {
             buscarCapacidadSede(cantidad, pantallaRegistrarVenta);
         }
+
+
+        // Toma la confirmacion de la venta
         public void tomarConfirmacion(int cantidadIngresada,PantallaRegistrarVenta pantallaRegistrarVenta)
         {
+            // Busca el ultimo numero de entrada registrada
             var nro= buscarUltimoNumeroEntrada();
+            // Crea las nuevas entradas confirmadas
             var entradas = generarEntradas(cantidadIngresada,nro);
+            //Imprime las nuevas entradas
             imprimirEntradas(entradas);
+            // Actualiza las pantallas de entrada y de las salas
             actualizarVistasEnPantallas(cantidadIngresada);
+            // finaliza el caso de uso 
             finCU(pantallaRegistrarVenta);
         }
 
+
+        // Muestra en mensaje de exito y finaliza el caso de uso
         private void finCU(PantallaRegistrarVenta pantallaRegistrarVenta)
         {
             MessageBox.Show("Venta realizada con éxito");
             pantallaRegistrarVenta.Close();
         }
+
+
+        // Actualiza la pantalla de entrada y las pantallas de salas
         private void actualizarVistasEnPantallas(int cantidadIngresada)
         {
-
+            // Actualiza pantalla de entrada
             pantallaEntrada.Visible = true;
             pantallaEntrada.actualizarPantalla(sedeActual.getCantidadMaximaVisitantes()+cantidadIngresada-cantidadMaxima,sedeActual.getCantidadMaximaVisitantes());
            
             
+
+            // Actualiza pantallas de salas
             pantallaSala.Visible = true;
             for (var i = 1; i < 5; i++)
             {
@@ -148,7 +185,7 @@ namespace PPAI_CU102_Grupo5.Controladores
         }
 
     
-
+        // Imprime las entradas
         private void imprimirEntradas(List<Entrada> entradas)
         {
             impresora.Visible = true;
@@ -159,9 +196,9 @@ namespace PPAI_CU102_Grupo5.Controladores
             }
             impresora.Visible = false;
 
-
         }
 
+        // Genera, guarda y retorna las nuevas entradas
         private List<Entrada> generarEntradas(int cantidadIngresada,int nro)
         {
             var idEntrada = nro;
@@ -179,6 +216,8 @@ namespace PPAI_CU102_Grupo5.Controladores
 
         }
 
+
+        // Busca y retorna el ultimo numero de entrada existente
         private int buscarUltimoNumeroEntrada()
         {
             var ultimoNro = 0;

@@ -54,21 +54,27 @@ namespace PPAI_CU102_Grupo5.Modelos
         // Fin seteo
 
 
-        // Get numero de entrada
+        // Retorna numero de entrada
         public int getNumero()
         {
             return NumeroEntrada;
         }
+
+        // Retorna el monto de la entrada
         public float getMonto()
         {
             return Monto;
         }
 
+
+        // Retorna la hora de la venta
         public string getHoraVenta()
         {
             return HoraVenta;
         }
 
+
+        // Retorna la fecha de venta
         public DateTime getFechaVenta()
         {
             return FechaVenta;

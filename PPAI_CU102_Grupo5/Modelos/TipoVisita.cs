@@ -28,7 +28,7 @@ namespace PPAI_CU102_Grupo5.Modelos
 
         // Fin Seteo
 
-
+        // Retorna el nombre del tipo de visita
         public string getNombre()
         {
             return this.Nombre;

@@ -11,6 +11,7 @@ namespace PPAI_CU102_Grupo5.Repositorios
 {
     static class RepositorioEntrada
     {
+        // Busca del servidor las entradas existentes
         public static List<Entrada> getEntradas()
         {
             BaseDatos bd = new BaseDatos();
@@ -34,10 +35,10 @@ namespace PPAI_CU102_Grupo5.Repositorios
 
             bd.desconectar();
             return entradas;
-
-
         }
 
+
+        // Guarda en el servidor las nuevas entradas generadas
         public static void generarEntradas(List<Entrada> nuevasEntradas)
         {
             BaseDatos bd = new BaseDatos();

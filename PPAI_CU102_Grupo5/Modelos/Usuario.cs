@@ -49,6 +49,8 @@ namespace PPAI_CU102_Grupo5.Modelos
 
         // Get de datos de usuario
 
+
+        // Retorna la contraseña del usuario
         public string getContraseña()
         {
             return Contraseña;

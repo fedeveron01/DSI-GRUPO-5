@@ -54,16 +54,21 @@ namespace PPAI_CU102_Grupo5.Modelos
         // Fin Seteo
 
 
+        // Valida que la reserva haya comenzado 
         public bool esFechaHora(DateTime fecha)
         {
             return fecha >= FechaHoraReserva ; 
         }
 
+
+        // Valida que la reserva no haya finalizado
         public bool sinFechaFin()
         {
             return HoraFinReal == null ;
         }
 
+
+        // Retorna la cantidad de alumnos confirmada
         public int getCantidadConfirmada()
         {
             

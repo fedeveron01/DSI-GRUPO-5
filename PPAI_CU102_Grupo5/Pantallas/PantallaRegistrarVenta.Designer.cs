@@ -46,6 +46,7 @@ namespace PPAI_CU102_Grupo5
             this.LblTotal = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.BtnCancelar = new System.Windows.Forms.Button();
+            this.CheckGuia = new System.Windows.Forms.CheckBox();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NmbCantidad)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -54,9 +55,9 @@ namespace PPAI_CU102_Grupo5
             // CBTarifas
             // 
             this.CBTarifas.FormattingEnabled = true;
-            this.CBTarifas.Location = new System.Drawing.Point(210, 157);
+            this.CBTarifas.Location = new System.Drawing.Point(229, 158);
             this.CBTarifas.Name = "CBTarifas";
-            this.CBTarifas.Size = new System.Drawing.Size(309, 23);
+            this.CBTarifas.Size = new System.Drawing.Size(337, 23);
             this.CBTarifas.TabIndex = 0;
             this.CBTarifas.Visible = false;
             // 
@@ -64,7 +65,7 @@ namespace PPAI_CU102_Grupo5
             // 
             this.TxtTarifas.AutoSize = true;
             this.TxtTarifas.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TxtTarifas.Location = new System.Drawing.Point(142, 157);
+            this.TxtTarifas.Location = new System.Drawing.Point(152, 157);
             this.TxtTarifas.Name = "TxtTarifas";
             this.TxtTarifas.Size = new System.Drawing.Size(62, 20);
             this.TxtTarifas.TabIndex = 1;
@@ -113,7 +114,7 @@ namespace PPAI_CU102_Grupo5
             // BtnConfirmar
             // 
             this.BtnConfirmar.BackColor = System.Drawing.Color.DarkSeaGreen;
-            this.BtnConfirmar.Location = new System.Drawing.Point(327, 200);
+            this.BtnConfirmar.Location = new System.Drawing.Point(327, 213);
             this.BtnConfirmar.Name = "BtnConfirmar";
             this.BtnConfirmar.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.BtnConfirmar.Size = new System.Drawing.Size(157, 37);
@@ -207,7 +208,7 @@ namespace PPAI_CU102_Grupo5
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(51, 27);
+            this.pictureBox1.Location = new System.Drawing.Point(59, 27);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(677, 430);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -226,11 +227,23 @@ namespace PPAI_CU102_Grupo5
             this.BtnCancelar.Visible = false;
             this.BtnCancelar.Click += new System.EventHandler(this.BtnCancelar_Click);
             // 
+            // CheckGuia
+            // 
+            this.CheckGuia.AutoSize = true;
+            this.CheckGuia.Location = new System.Drawing.Point(327, 188);
+            this.CheckGuia.Name = "CheckGuia";
+            this.CheckGuia.Size = new System.Drawing.Size(147, 19);
+            this.CheckGuia.TabIndex = 15;
+            this.CheckGuia.Text = "Incluir servicio de guía ";
+            this.CheckGuia.UseVisualStyleBackColor = true;
+            this.CheckGuia.Visible = false;
+            // 
             // PantallaRegistrarVenta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.CheckGuia);
             this.Controls.Add(this.BtnCancelar);
             this.Controls.Add(this.LblTotal);
             this.Controls.Add(this.BtnConfirmarVenta);
@@ -288,6 +301,7 @@ namespace PPAI_CU102_Grupo5
         private System.Windows.Forms.Label LblTotal;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button BtnCancelar;
+        private System.Windows.Forms.CheckBox CheckGuia;
     }
 }
 
