@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace PPAI_CU102_Grupo5.Controladores
 {
-    public class GestorRegistrarVenta
+    public class GestorRegistrarVenta : ISujetoCantidadVisitantes
     {
         private Sede sedeActual;
         private Tarifa TarifaSeleccionada;
@@ -21,13 +21,14 @@ namespace PPAI_CU102_Grupo5.Controladores
         private PantallaSala pantallaSala;
         private int cantidadMaxima;
         private bool servicioGuia;
-
+        private List<IObservadorCantidadVisitantes> observadores;
         public GestorRegistrarVenta(Impresora impresora,PantallaEntrada pantallaEntrada,PantallaSala pantallaSala)
         {
             this.impresora = impresora;
             this.pantallaSala = pantallaSala;
             this.pantallaEntrada = pantallaEntrada;
             entradas = RepositorioEntrada.getEntradas();
+            observadores = new List<IObservadorCantidadVisitantes>();
         }
 
         
@@ -142,8 +143,11 @@ namespace PPAI_CU102_Grupo5.Controladores
         // Toma la confirmacion de la venta
         public void tomarConfirmacion(int cantidadIngresada,PantallaRegistrarVenta pantallaRegistrarVenta)
         {
+            suscribir(pantallaEntrada);
+            suscribir(pantallaSala);
+
             // Busca el ultimo numero de entrada registrada
-            var nro= buscarUltimoNumeroEntrada();
+            var nro = buscarUltimoNumeroEntrada();
             // Crea las nuevas entradas confirmadas
             var entradas = generarEntradas(cantidadIngresada,nro);
             //Imprime las nuevas entradas
@@ -164,23 +168,36 @@ namespace PPAI_CU102_Grupo5.Controladores
 
 
         // Actualiza la pantalla de entrada y las pantallas de salas
-        private void actualizarVistasEnPantallas(int cantidadIngresada)
+        public void actualizarVistasEnPantallas(int cantidadIngresada)
         {
-            // Actualiza pantalla de entrada
-            pantallaEntrada.Visible = true;
-            pantallaEntrada.actualizarPantalla(sedeActual.getCantidadMaximaVisitantes()+cantidadIngresada-cantidadMaxima,sedeActual.getCantidadMaximaVisitantes());
-           
-            
 
-            // Actualiza pantallas de salas
-            pantallaSala.Visible = true;
-            for (var i = 1; i < 5; i++)
+            for (var i = 0; i < this.observadores.Count; i++)
             {
-                pantallaSala.actualizarPantalla(i,sedeActual.getCantidadMaximaVisitantes() + cantidadIngresada - cantidadMaxima, sedeActual.getCantidadMaximaVisitantes());
+
+                if (this.observadores[i].GetType() == typeof(PantallaEntrada))
+                {
+                    // Actualiza pantalla de entrada
+
+                    PantallaEntrada pantalla = (PantallaEntrada)this.observadores[i];
+                    pantalla.Visible = true;
+                    pantalla.actualizarPantalla(1, sedeActual.getCantidadMaximaVisitantes() + cantidadIngresada - cantidadMaxima, sedeActual.getCantidadMaximaVisitantes());
+
+                }
+                else
+                {
+
+                    PantallaSala pantalla = (PantallaSala)this.observadores[i];
+                    pantalla.Visible = true;
+                    for (var j = 1; j < 5; j++) {
+                        this.observadores[i].actualizarPantalla(j, sedeActual.getCantidadMaximaVisitantes() + cantidadIngresada - cantidadMaxima, sedeActual.getCantidadMaximaVisitantes());
+
+                    }
+
                 
+                }   
 
             }
-
+    
 
         }
 
@@ -229,6 +246,18 @@ namespace PPAI_CU102_Grupo5.Controladores
             }
 
             return ultimoNro;
+        }
+
+     
+
+        public void suscribir(IObservadorCantidadVisitantes observador)
+        {
+            this.observadores.Add(observador);
+        }
+
+        public void quitar(IObservadorCantidadVisitantes observador)
+        {
+            this.observadores.Remove(observador);
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PPAI_CU102_Grupo5.Modelos;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,14 +11,14 @@ using System.Windows.Forms;
 
 namespace PPAI_CU102_Grupo5.Pantallas
 {
-    public partial class PantallaSala : Form
+    public partial class PantallaSala : Form,IObservadorCantidadVisitantes
     {
         public PantallaSala()
         {
             InitializeComponent();
         }
 
-        internal void actualizarPantalla(int nro,int cantidad, int capacidad)
+        public void actualizarPantalla(int nro,int cantidad, int capacidad)
         {
             LblCantidad.Text = "Cantidad actual de visitantes : "+cantidad;
             LblCapacidad.Text = "Capacidad de la sede :"+capacidad;

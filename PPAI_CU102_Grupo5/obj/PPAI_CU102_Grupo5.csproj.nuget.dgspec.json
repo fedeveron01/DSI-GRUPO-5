@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Fede\\Documents\\DSI TP1\\DSI-GRUPO-5\\PPAI_CU102_Grupo5\\PPAI_CU102_Grupo5.csproj": {}
+    "C:\\Users\\Fede\\Source\\Repos\\DSI-GRUPO-5\\PPAI_CU102_Grupo5\\PPAI_CU102_Grupo5.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Fede\\Documents\\DSI TP1\\DSI-GRUPO-5\\PPAI_CU102_Grupo5\\PPAI_CU102_Grupo5.csproj": {
+    "C:\\Users\\Fede\\Source\\Repos\\DSI-GRUPO-5\\PPAI_CU102_Grupo5\\PPAI_CU102_Grupo5.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Fede\\Documents\\DSI TP1\\DSI-GRUPO-5\\PPAI_CU102_Grupo5\\PPAI_CU102_Grupo5.csproj",
+        "projectUniqueName": "C:\\Users\\Fede\\Source\\Repos\\DSI-GRUPO-5\\PPAI_CU102_Grupo5\\PPAI_CU102_Grupo5.csproj",
         "projectName": "PPAI_CU102_Grupo5",
-        "projectPath": "C:\\Users\\Fede\\Documents\\DSI TP1\\DSI-GRUPO-5\\PPAI_CU102_Grupo5\\PPAI_CU102_Grupo5.csproj",
+        "projectPath": "C:\\Users\\Fede\\Source\\Repos\\DSI-GRUPO-5\\PPAI_CU102_Grupo5\\PPAI_CU102_Grupo5.csproj",
         "packagesPath": "C:\\Users\\Fede\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Fede\\Documents\\DSI TP1\\DSI-GRUPO-5\\PPAI_CU102_Grupo5\\obj\\",
+        "outputPath": "C:\\Users\\Fede\\Source\\Repos\\DSI-GRUPO-5\\PPAI_CU102_Grupo5\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Fede\\AppData\\Roaming\\NuGet\\NuGet.Config",
