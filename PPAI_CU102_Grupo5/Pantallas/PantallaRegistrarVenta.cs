@@ -79,7 +79,7 @@ namespace PPAI_CU102_Grupo5
 
         }
 
-        internal void mostrarDatosEntrada(int cantidad, float precio ,float montoTotal )
+        public void mostrarDatosEntrada(int cantidad, float precio ,float montoTotal )
         {
 
             NmbCantidad.Visible = false;

@@ -18,14 +18,16 @@ namespace PPAI_CU102_Grupo5.Controladores
         private float montoEntrada;
         private Impresora impresora;
         private PantallaEntrada pantallaEntrada;
-        private PantallaSala pantallaSala;
+        private List<PantallaSala> pantallasSala;
         private int cantidadMaxima;
         private bool servicioGuia;
         private List<IObservadorCantidadVisitantes> observadores;
-        public GestorRegistrarVenta(Impresora impresora,PantallaEntrada pantallaEntrada,PantallaSala pantallaSala)
+        private int cantidadIngresada;
+
+        public GestorRegistrarVenta(Impresora impresora,PantallaEntrada pantallaEntrada,List<PantallaSala> pantallasSala)
         {
             this.impresora = impresora;
-            this.pantallaSala = pantallaSala;
+            this.pantallasSala = pantallasSala;
             this.pantallaEntrada = pantallaEntrada;
             entradas = RepositorioEntrada.getEntradas();
             observadores = new List<IObservadorCantidadVisitantes>();
@@ -85,7 +87,7 @@ namespace PPAI_CU102_Grupo5.Controladores
 
         // Busca la capacidad maxima de la sede y la resta con la cantidad de visitantes actuales y ese numero se compara con la cantidad de entradas que desea comprar
         // retornando en caso de ser falso un mensaje de error.
-        private void buscarCapacidadSede(int cantidad, PantallaRegistrarVenta pantallaRegistrarVenta)
+        public void buscarCapacidadSede(int cantidad, PantallaRegistrarVenta pantallaRegistrarVenta)
         {
             var fecha = obtenerFechaHoraActual();
             cantidadMaxima = sedeActual.getCantidadMaximaVisitantes()- sedeActual.getCantidadMaximaVisitantes(fecha) ;
@@ -108,7 +110,7 @@ namespace PPAI_CU102_Grupo5.Controladores
 
 
         // Busca el monto por tarifa sumando el monto adicional en caso de tener y lo retorna
-        private float calcularMontoAPagar(int cantidad)
+        public float calcularMontoAPagar(int cantidad)
         {
             if (servicioGuia) 
             {
@@ -127,7 +129,7 @@ namespace PPAI_CU102_Grupo5.Controladores
 
 
         // Valida que una cantidad sea menor o igual a otra
-        private bool validarCantidadVisitantes(int cantidadIngresada, int cantidadMaxima)
+        public bool validarCantidadVisitantes(int cantidadIngresada, int cantidadMaxima)
         {
             return cantidadIngresada <= cantidadMaxima && cantidadIngresada > 0;
         }
@@ -143,8 +145,12 @@ namespace PPAI_CU102_Grupo5.Controladores
         // Toma la confirmacion de la venta
         public void tomarConfirmacion(int cantidadIngresada,PantallaRegistrarVenta pantallaRegistrarVenta)
         {
+            for (var i = 0; i < pantallasSala.Count; i++)
+            {
+                suscribir(pantallasSala[i]);
+            }
             suscribir(pantallaEntrada);
-            suscribir(pantallaSala);
+            
 
             // Busca el ultimo numero de entrada registrada
             var nro = buscarUltimoNumeroEntrada();
@@ -160,17 +166,27 @@ namespace PPAI_CU102_Grupo5.Controladores
 
 
         // Muestra en mensaje de exito y finaliza el caso de uso
-        private void finCU(PantallaRegistrarVenta pantallaRegistrarVenta)
+        public void finCU(PantallaRegistrarVenta pantallaRegistrarVenta)
         {
             MessageBox.Show("Venta realizada con éxito");
             pantallaRegistrarVenta.Close();
         }
 
 
+        public int getCantidad()
+        {
+            return sedeActual.getCantidadMaximaVisitantes() + this.cantidadIngresada - this.cantidadMaxima;
+        }
+
+        public int getCapacidad()
+        {
+            return sedeActual.getCantidadMaximaVisitantes();
+        }
+
         // Actualiza la pantalla de entrada y las pantallas de salas
         public void actualizarVistasEnPantallas(int cantidadIngresada)
         {
-
+            this.cantidadIngresada = cantidadIngresada;
             for (var i = 0; i < this.observadores.Count; i++)
             {
 
@@ -180,20 +196,18 @@ namespace PPAI_CU102_Grupo5.Controladores
 
                     PantallaEntrada pantalla = (PantallaEntrada)this.observadores[i];
                     pantalla.Visible = true;
-                    pantalla.actualizarPantalla(1, sedeActual.getCantidadMaximaVisitantes() + cantidadIngresada - cantidadMaxima, sedeActual.getCantidadMaximaVisitantes());
-
+                   // pantalla.actualizarPantalla(1, sedeActual.getCantidadMaximaVisitantes() + cantidadIngresada - cantidadMaxima, sedeActual.getCantidadMaximaVisitantes());
+                    pantalla.actualizarPantalla(this);
                 }
                 else
                 {
 
                     PantallaSala pantalla = (PantallaSala)this.observadores[i];
                     pantalla.Visible = true;
-                    for (var j = 1; j < 5; j++) {
-                        this.observadores[i].actualizarPantalla(j, sedeActual.getCantidadMaximaVisitantes() + cantidadIngresada - cantidadMaxima, sedeActual.getCantidadMaximaVisitantes());
+                    this.observadores[i].actualizarPantalla(this);
+                   
 
-                    }
 
-                
                 }   
 
             }
@@ -201,9 +215,9 @@ namespace PPAI_CU102_Grupo5.Controladores
 
         }
 
-    
+
         // Imprime las entradas
-        private void imprimirEntradas(List<Entrada> entradas)
+        public void imprimirEntradas(List<Entrada> entradas)
         {
             impresora.Visible = true;
             for(var i = 0; i < entradas.Count; i++)
@@ -216,7 +230,7 @@ namespace PPAI_CU102_Grupo5.Controladores
         }
 
         // Genera, guarda y retorna las nuevas entradas
-        private List<Entrada> generarEntradas(int cantidadIngresada,int nro)
+        public List<Entrada> generarEntradas(int cantidadIngresada,int nro)
         {
             var idEntrada = nro;
             var entradas = new List<Entrada>();
@@ -235,7 +249,7 @@ namespace PPAI_CU102_Grupo5.Controladores
 
 
         // Busca y retorna el ultimo numero de entrada existente
-        private int buscarUltimoNumeroEntrada()
+        public int buscarUltimoNumeroEntrada()
         {
             var ultimoNro = 0;
             for (var i =0; i<entradas.Count; i++)

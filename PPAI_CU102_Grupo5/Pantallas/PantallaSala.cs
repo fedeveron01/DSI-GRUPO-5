@@ -1,4 +1,5 @@
-﻿using PPAI_CU102_Grupo5.Modelos;
+﻿using PPAI_CU102_Grupo5.Controladores;
+using PPAI_CU102_Grupo5.Modelos;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,17 +14,14 @@ namespace PPAI_CU102_Grupo5.Pantallas
 {
     public partial class PantallaSala : Form,IObservadorCantidadVisitantes
     {
-        public PantallaSala()
+        private int nroPantalla ;
+        public PantallaSala(int nro)
         {
+            this.nroPantalla = nro;
             InitializeComponent();
         }
+        
 
-        public void actualizarPantalla(int nro,int cantidad, int capacidad)
-        {
-            LblCantidad.Text = "Cantidad actual de visitantes : "+cantidad;
-            LblCapacidad.Text = "Capacidad de la sede :"+capacidad;
-            MessageBox.Show("Sala numero " + nro);
-        }
 
         private void PantallaSala_Load(object sender, EventArgs e)
         {
@@ -37,6 +35,17 @@ namespace PPAI_CU102_Grupo5.Pantallas
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
+
+        }
+
+        public void actualizarPantalla(ISujetoCantidadVisitantes sujetoConcreto)
+        {
+           
+                GestorRegistrarVenta sujeto = (GestorRegistrarVenta)sujetoConcreto;
+                LblCantidad.Text += sujeto.getCantidad();
+                LblCapacidad.Text += sujeto.getCapacidad();
+                MessageBox.Show("Sala numero " + this.nroPantalla);
+
 
         }
     }

@@ -1,4 +1,5 @@
-﻿using PPAI_CU102_Grupo5.Modelos;
+﻿using PPAI_CU102_Grupo5.Controladores;
+using PPAI_CU102_Grupo5.Modelos;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,13 +19,13 @@ namespace PPAI_CU102_Grupo5.Pantallas
             InitializeComponent();
         }
 
-        public void actualizarPantalla(int nro,int cantidad, int capacidad )
+
+        public void actualizarPantalla(ISujetoCantidadVisitantes sujetoConcreto)
         {
-            LblCantidad.Text += cantidad;
-            LblCapacidad.Text += capacidad;
+            GestorRegistrarVenta sujeto = (GestorRegistrarVenta) sujetoConcreto;
+            LblCantidad.Text += sujeto.getCantidad();
+            LblCapacidad.Text += sujeto.getCapacidad();
         }
-
-
 
         private void PantallaEntrada_Load(object sender, EventArgs e)
         {

@@ -24,7 +24,13 @@ namespace PPAI_CU102_Grupo5
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             RepositorioSesion repositorioSesion = new RepositorioSesion();
-            GestorRegistrarVenta gestorRegistrarVenta = new GestorRegistrarVenta(new Impresora(),new PantallaEntrada(),new PantallaSala());
+            List<PantallaSala> pantallasSala = new List<PantallaSala>();
+            for (var i = 1; i <= 5; i++)
+            {
+                pantallasSala.Add(new PantallaSala(i));
+
+            }
+            GestorRegistrarVenta gestorRegistrarVenta = new GestorRegistrarVenta(new Impresora(),new PantallaEntrada(), pantallasSala);
             Application.Run(new PantallaRegistrarVenta(gestorRegistrarVenta,repositorioSesion));
         }
     }
