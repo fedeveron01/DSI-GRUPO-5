@@ -128,17 +128,18 @@ namespace PPAI_CU102_Grupo5
             tomarSeleccionCantidadEntradas(cantidadEntradasIngresadas);
         }
 
-        private void tomarSeleccionTarifa(string tarifa)
+        private void tomarSeleccionTarifa()
         {
-            Tarifa seleccionada = sesionActual.conocerUsuario().conocerEmpleado().conocerSede().getTarifas().Where(tar => tar.getId() == int.Parse(tarifa)).FirstOrDefault();
+            string[] tarifas = CBTarifas.SelectedItem.ToString().Split(' ');
+            string tarifa = tarifas[0];
+            Tarifa seleccionada = sesionActual.getUsuario().getEmpleado().getSede().getTarifas().Where(tar => tar.getId() == int.Parse(tarifa)).FirstOrDefault();
             var conGuia = CheckGuia.Checked;
             gestorRegistrarVenta.tomarSeleccionTarifa(seleccionada,conGuia,this);
         }
         private void BtnConfirmar_Click(object sender, EventArgs e)
         {
-            var tarifa = CBTarifas.SelectedItem.ToString().Split(' ');
             
-            tomarSeleccionTarifa(tarifa[0]);
+            tomarSeleccionTarifa();
         }
 
         public void tomarConfirmacion()

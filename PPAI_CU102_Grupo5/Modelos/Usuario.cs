@@ -42,7 +42,7 @@ namespace PPAI_CU102_Grupo5.Modelos
         // Fin Seteo
 
 
-        public Empleado conocerEmpleado()
+        public Empleado getEmpleado()
         {
             return this.Empleado;
         }

@@ -78,7 +78,7 @@ namespace PPAI_CU102_Grupo5.Modelos
         // Fin Seteo
 
 
-        public Sede conocerSede()
+        public Sede getSede()
         {
             return this.Sede;
         }

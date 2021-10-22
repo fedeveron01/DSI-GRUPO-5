@@ -61,9 +61,9 @@ namespace PPAI_CU102_Grupo5.Controladores
         }
         public Sede buscarSedeActual(Sesion sesionActual)
         {
-            var usuario = sesionActual.conocerUsuario();
-            var empleado = usuario.conocerEmpleado();
-            var sede =empleado.conocerSede();
+            var usuario = sesionActual.getUsuario();
+            var empleado = usuario.getEmpleado();
+            var sede =empleado.getSede();
             return sede;
         }
 
@@ -116,7 +116,7 @@ namespace PPAI_CU102_Grupo5.Controladores
             {
                 montoEntrada = (TarifaSeleccionada.getMonto() + TarifaSeleccionada.getMontoAdicionalGuia());
 
-
+                
             }
             else
             {

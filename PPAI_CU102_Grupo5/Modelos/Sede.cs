@@ -85,6 +85,21 @@ namespace PPAI_CU102_Grupo5.Modelos
         // Fin Seteo
 
 
+
+        public string obtenerDetalleTarifa(Tarifa tarifa)
+        {
+            var detalleTarifa = "";
+
+        
+            detalleTarifa += tarifa.getId();
+            detalleTarifa += " - " + tarifa.getTipoEntrada().getNombre().ToString();
+
+            detalleTarifa += " - " + tarifa.getTipoVisita().getNombre().ToString();
+            detalleTarifa += " Monto: $" + tarifa.getMonto().ToString();
+            detalleTarifa += " Monto adicional : $" + tarifa.getMontoAdicionalGuia().ToString();
+
+            return detalleTarifa;
+        }
         // Busca y retorna una lista de tarifas vigentes 
         public List<string> buscarTarifasVigentes()
         {
@@ -98,15 +113,7 @@ namespace PPAI_CU102_Grupo5.Modelos
             {
                 if (Tarifas[i].esVigente())
                 {
-                    var detalleTarifa = "";
-
-                    var tarifa = Tarifas[i];
-                    detalleTarifa += Tarifas[i].getId();
-                    detalleTarifa += " - " +tarifa.getTipoEntrada().getNombre().ToString();
-
-                    detalleTarifa += " - " + tarifa.getTipoVisita().getNombre().ToString();
-                    detalleTarifa += " Monto: $" + tarifa.getMonto().ToString();
-                    detalleTarifa += " Monto adicional : $" + tarifa.getMontoAdicionalGuia().ToString();
+                    var detalleTarifa = obtenerDetalleTarifa(Tarifas[i]);
 
                     tarifasAMostrar.Add(detalleTarifa);
 

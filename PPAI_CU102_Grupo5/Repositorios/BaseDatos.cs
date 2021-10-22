@@ -20,7 +20,7 @@ namespace PPAI_CU102_Grupo5.Repositorios
         {
             if (Conexion.State == ConnectionState.Closed)
             {
-                Conexion.ConnectionString = "Data Source=DESKTOP-FDKI1R8\\SQLEXPRESS;Initial Catalog=museo;Integrated Security=True";
+                Conexion.ConnectionString = "Data Source=DESKTOP-00310BK\\SQLEXPRESS;Initial Catalog=museo;Integrated Security=True";
                 Conexion.Open();
                 Cmd.Connection = Conexion;
                 Cmd.CommandType = System.Data.CommandType.Text;

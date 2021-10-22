@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Fede\\Source\\Repos\\DSI-GRUPO-5\\PPAI_CU102_Grupo5\\PPAI_CU102_Grupo5.csproj": {}
+    "C:\\Users\\Federico\\Source\\Repos\\DSI-GRUPO-5\\PPAI_CU102_Grupo5\\PPAI_CU102_Grupo5.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Fede\\Source\\Repos\\DSI-GRUPO-5\\PPAI_CU102_Grupo5\\PPAI_CU102_Grupo5.csproj": {
+    "C:\\Users\\Federico\\Source\\Repos\\DSI-GRUPO-5\\PPAI_CU102_Grupo5\\PPAI_CU102_Grupo5.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Fede\\Source\\Repos\\DSI-GRUPO-5\\PPAI_CU102_Grupo5\\PPAI_CU102_Grupo5.csproj",
+        "projectUniqueName": "C:\\Users\\Federico\\Source\\Repos\\DSI-GRUPO-5\\PPAI_CU102_Grupo5\\PPAI_CU102_Grupo5.csproj",
         "projectName": "PPAI_CU102_Grupo5",
-        "projectPath": "C:\\Users\\Fede\\Source\\Repos\\DSI-GRUPO-5\\PPAI_CU102_Grupo5\\PPAI_CU102_Grupo5.csproj",
-        "packagesPath": "C:\\Users\\Fede\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Fede\\Source\\Repos\\DSI-GRUPO-5\\PPAI_CU102_Grupo5\\obj\\",
+        "projectPath": "C:\\Users\\Federico\\Source\\Repos\\DSI-GRUPO-5\\PPAI_CU102_Grupo5\\PPAI_CU102_Grupo5.csproj",
+        "packagesPath": "C:\\Users\\Federico\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Federico\\Source\\Repos\\DSI-GRUPO-5\\PPAI_CU102_Grupo5\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Fede\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Federico\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -63,7 +63,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.402\\RuntimeIdentifierGraph.json"
         }
       }
     }

@@ -46,7 +46,7 @@ namespace PPAI_CU102_Grupo5.Modelos
 
 
         // Retorna un Usuario
-        public Usuario conocerUsuario()
+        public Usuario getUsuario()
         {
             return Usuario;
         }
