@@ -20,11 +20,10 @@ namespace PPAI_CU102_Grupo5.Pantallas
         }
 
 
-        public void actualizarPantalla(ISujetoCantidadVisitantes sujetoConcreto)
+        public void actualizarPantalla(int cantidad , int capacidad)
         {
-            GestorRegistrarVenta sujeto = (GestorRegistrarVenta) sujetoConcreto;
-            LblCantidad.Text += sujeto.getCantidad();
-            LblCapacidad.Text += sujeto.getCapacidad();
+            LblCantidad.Text += cantidad;
+            LblCapacidad.Text += capacidad;
         }
 
         private void PantallaEntrada_Load(object sender, EventArgs e)

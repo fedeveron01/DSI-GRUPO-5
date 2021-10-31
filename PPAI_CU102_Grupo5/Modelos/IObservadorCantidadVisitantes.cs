@@ -8,7 +8,7 @@ namespace PPAI_CU102_Grupo5.Modelos
 {
     public interface IObservadorCantidadVisitantes
     {
-        public void actualizarPantalla(ISujetoCantidadVisitantes sujetoConcreto);
+        public void actualizarPantalla(int cantidad , int capacidad);
 
       
     }

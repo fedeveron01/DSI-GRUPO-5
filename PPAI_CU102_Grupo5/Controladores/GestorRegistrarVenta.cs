@@ -19,7 +19,8 @@ namespace PPAI_CU102_Grupo5.Controladores
         private Impresora impresora;
         private PantallaEntrada pantallaEntrada;
         private List<PantallaSala> pantallasSala;
-        private int cantidadMaxima;
+        private int cantidadMaximaSede;
+        private int cantidadMaximaActual;
         private bool servicioGuia;
         private List<IObservadorCantidadVisitantes> observadores;
         private int cantidadIngresada;
@@ -90,15 +91,16 @@ namespace PPAI_CU102_Grupo5.Controladores
         public void buscarCapacidadSede(int cantidad, PantallaRegistrarVenta pantallaRegistrarVenta)
         {
             var fecha = obtenerFechaHoraActual();
-            cantidadMaxima = sedeActual.getCantidadMaximaVisitantes()- sedeActual.getCantidadMaximaVisitantes(fecha) ;
-            if (validarCantidadVisitantes(cantidad, cantidadMaxima))
+            cantidadMaximaSede = sedeActual.getCantidadMaximaVisitantes();
+            cantidadMaximaActual = sedeActual.getCantidadMaximaVisitantes()- sedeActual.getCantidadMaximaVisitantes(fecha) ;
+            if (validarCantidadVisitantes(cantidad, cantidadMaximaActual))
             {
                 var monto = calcularMontoAPagar(cantidad);
                 pantallaRegistrarVenta.mostrarDatosEntrada(cantidad,montoEntrada,monto);
             }
             else if(cantidad > 0)
             {
-                MessageBox.Show("La cantidad de entradas ingresadas supera la capacidad disponible de la sede "+sedeActual.getNombre() +" ( "+cantidadMaxima.ToString()+ " )" );
+                MessageBox.Show("La cantidad de entradas ingresadas supera la capacidad disponible de la sede "+sedeActual.getNombre() +" ( "+cantidadMaximaActual.ToString()+ " )" );
             }
             else
             {
@@ -173,16 +175,7 @@ namespace PPAI_CU102_Grupo5.Controladores
         }
 
 
-        public int getCantidad()
-        {
-            return sedeActual.getCantidadMaximaVisitantes() + this.cantidadIngresada - this.cantidadMaxima;
-        }
-
-        public int getCapacidad()
-        {
-            return sedeActual.getCantidadMaximaVisitantes();
-        }
-
+     
         // Actualiza la pantalla de entrada y las pantallas de salas
         public void actualizarVistasEnPantallas(int cantidadIngresada)
         {
@@ -196,15 +189,14 @@ namespace PPAI_CU102_Grupo5.Controladores
 
                     PantallaEntrada pantalla = (PantallaEntrada)this.observadores[i];
                     pantalla.Visible = true;
-                   // pantalla.actualizarPantalla(1, sedeActual.getCantidadMaximaVisitantes() + cantidadIngresada - cantidadMaxima, sedeActual.getCantidadMaximaVisitantes());
-                    pantalla.actualizarPantalla(this);
+                    pantalla.actualizarPantalla(this.cantidadMaximaSede + this.cantidadIngresada - this.cantidadMaximaActual, this.cantidadMaximaSede);
                 }
                 else
                 {
 
                     PantallaSala pantalla = (PantallaSala)this.observadores[i];
                     pantalla.Visible = true;
-                    this.observadores[i].actualizarPantalla(this);
+                    this.observadores[i].actualizarPantalla(this.cantidadMaximaSede + this.cantidadIngresada - this.cantidadMaximaActual, this.cantidadMaximaSede);
                    
 
 

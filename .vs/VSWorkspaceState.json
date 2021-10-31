@@ -1,6 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\PPAI_CU102_Grupo5",
+    "\\PPAI_CU102_Grupo5\\Controladores"
   ],
+  "SelectedNode": "\\PPAI_CU102_Grupo5\\Controladores\\GestorRegistrarVenta.cs",
   "PreviewInSolutionExplorer": false
 }
