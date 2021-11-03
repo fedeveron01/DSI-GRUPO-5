@@ -50,7 +50,7 @@ namespace PPAI_CU102_Grupo5
             this.BtnConfirmar.Visible = true;
             this.BtnCancelar.Visible = true;
             this.CheckGuia.Visible = true;
-
+          
             
         }
 
@@ -63,12 +63,15 @@ namespace PPAI_CU102_Grupo5
 
             NmbCantidad.Visible = true;
             BtnConfirmarCantidad.Visible = true;
-            LblCantidad.Visible = true; 
+            LblCantidad.Visible = true;
+           
+            this.BtnVolverTarifas.Visible = true;
 
         }
 
         public void mostrarTarifasVigentes(List<string> tarifasVigentes)
         {
+            CBTarifas.Items.Clear();
           for(var i = 0; i < tarifasVigentes.Count; i++)
             {
                 CBTarifas.Items.Add(tarifasVigentes[i].ToString());
@@ -85,11 +88,12 @@ namespace PPAI_CU102_Grupo5
             NmbCantidad.Visible = false;
             BtnConfirmarCantidad.Visible = false;
             LblCantidad.Visible = false;
+            BtnVolverTarifas.Visible = false;
 
             LblMostrarCantidad.Visible = true;
             LblPrecio.Visible = true;
             LblTotal.Visible = true;
-            
+            BtnVolverCantidad.Visible = true;
 
             LblMostrarCantidad.Text = "Cantidad entradas : " + cantidad.ToString();
             LblPrecio.Text = "Precio por entrada : $" + precio.ToString();
@@ -156,11 +160,101 @@ namespace PPAI_CU102_Grupo5
 
         }
 
+        public void desactivarTodo()
+        {
+            this.BtnCancelar.Visible = false;
+            this.BtnConfirmar.Visible = false;
+            this.BtnConfirmarCantidad.Visible = false;
+            this.BtnConfirmarVenta.Visible = false;
+            this.BtnVolverTarifas.Visible = false;
+            this.BtnVolverCantidad.Visible = false;
+            this.LblCantidad.Visible = false;
+            this.LblMensajeEntradas.Visible = false;
+            this.LblMensajeTarifas.Visible = false;
+            this.LblMostrarCantidad.Visible = false;
+            this.LblPrecio.Visible = false;
+            this.LblTotal.Visible = false;
+            this.CBTarifas.Visible = false;
+            this.TxtTarifas.Visible = false;
+            this.NmbCantidad.Visible = false;
+            this.CheckGuia.Visible = false;
+           
+        }
+
         private void BtnCancelar_Click(object sender, EventArgs e)
         {
             MessageBox.Show("La venta ha sido cancelada");
-            this.Close();
+            this.desactivarTodo();
+            this.BtnOpcionRegistrarVentaEntrada.Visible = true;
 
+
+        }
+
+        private void NmbCantidad_ValueChanged(object sender, EventArgs e)
+        {
+            if (int.Parse(NmbCantidad.Value.ToString()) <= 0)
+            {
+                LblMensajeEntradas.Visible = true;
+                BtnConfirmarCantidad.Enabled = false;
+            }
+            else
+            {
+                LblMensajeEntradas.Visible = false;
+                BtnConfirmarCantidad.Enabled = true;
+            }
+               
+        }
+
+   
+
+ 
+        private void CBTarifas_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LblMensajeTarifas.Visible = false;
+            BtnConfirmar.Enabled = true;
+        }
+
+        private void NmbCantidad_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (int.Parse(NmbCantidad.Value.ToString()) <= 0)
+            {
+                LblMensajeEntradas.Visible = true;
+                BtnConfirmarCantidad.Enabled = false;
+
+            }
+            else
+            {
+                LblMensajeEntradas.Visible = false;
+                BtnConfirmarCantidad.Enabled = true;
+
+            }
+        }
+
+        private void CBTarifas_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (CBTarifas.SelectedIndex == -1)
+            {
+                LblMensajeTarifas.Visible = true;
+                BtnConfirmar.Enabled = false;
+            }
+            else
+            {
+                LblMensajeTarifas.Visible = false;
+                BtnConfirmar.Enabled = true;
+
+            }
+        }
+
+        private void BtnVolverCantidad_Click(object sender, EventArgs e)
+        {
+            this.desactivarTodo();
+            this.solicitarCantidadEntradas();
+        }
+
+        private void BtnVolverTarifas_Click(object sender, EventArgs e)
+        {
+            this.desactivarTodo();
+            this.habilitarPantalla();
         }
     }
 }
